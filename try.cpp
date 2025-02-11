@@ -1,42 +1,62 @@
-#include<iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-int partision(int *arr, int s , int e){
-    int count = 0;
-    int pivot = arr[s];
-    for(int i = s+1; i <= e; i++){
-        if(arr[i] <= pivot) count++;
-    }
-    int pivotIndex = s + count;
-    swap(arr[s], arr[pivotIndex]);
-
-    int i = s, j = e;
-    while(i < pivotIndex && j > pivotIndex){
-        while(arr[i] < arr[pivotIndex]) i++;
-        while(arr[j] > arr[pivotIndex]) j--;
-        if(i < pivotIndex && j > pivotIndex){
-            swap(arr[i] , arr[j]);
+vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        set<vector<int>> st;
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
+        for(int i = 0; i < n; i++){//first pointer
+            int j = i + 1;//second pointer
+            int k = n - 1;// last pointer
+            while(i < k){
+                int l = k - 1;// second last pointer
+                while(j < l){
+                    cout << nums[i] << endl;
+                    cout << nums[j] << endl;
+                    cout << nums[l] << endl;
+                    cout << nums[k] << endl<<endl;
+                    int sum = nums[i] + nums[j] + nums[k] + nums[l];
+                    if(sum > target){//decreasing the sum
+                        l--;
+                    }
+                    else if(sum < target){//increasing the sum
+                        j++;
+                    }
+                    else{
+                        //sum == target
+                        vector<int> temp = {nums[i], nums[j], nums[k], nums[l]};
+                        st.insert(temp);
+                        l--;
+                        j++;
+                        while(j<l && nums[j] ==nums[j-1]) j++;
+                        while(j<l && nums[l] == nums[l+1]) l--;
+                    }
+                }
+                k--;
+            }
         }
+        vector<vector<int>> ans(st.begin(), st.end());
+        return ans;
     }
-    return pivotIndex;
+
+void printMatrix(const vector<vector<int>>& matrix) {
+    for (const auto& row : matrix) {  // Loop through each row
+        for (const auto& elem : row) { // Loop through each element in the row
+            cout << elem << " ";
+        }
+        cout << endl;  // New line after each row
+    }
 }
 
-void QuickSort(int *arr, int s, int e){
-    if(s >= e) return;
-    int p = partision(arr, s, e);
-    QuickSort(arr, s, p-1);
-    QuickSort(arr, p+1, e);
-}
+int main() {
 
-void printArray(int arr[], int n){
-    for (int  i = 0; i < n; i++){
-        cout << arr[i] << " ";
-    }
+    vector<int> arr = {-3,-1,0,2,4,5};
+    int target = 2;
+
+    vector<vector<int>> ans = fourSum(arr,target);
+    printMatrix(ans);
+
+    
     cout << endl;
-}
-
-int main(){
-    int arr[] = {3, 5, 1, 4 ,2 };
-    QuickSort(arr, 0, 4 );
-    printArray(arr, 5);
+    return 0 ;
 }

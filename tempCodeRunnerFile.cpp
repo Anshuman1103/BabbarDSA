@@ -1,26 +1,7 @@
-#include<iostream>
-using namespace std;
-
-class A {
-    public:
-    void func(){
-        cout <<"Function of A" << endl;
-    }
-};
-
-class B{
-    public:
-    void func(){
-        cout <<"Function of B" << endl;
-    }
-};
-
-class C: public A, public B{
-    
-};
-
-int main(){
-    C obj;
-    obj.A::func();  // scope resolution opreator
-    obj.B::func();
-}
+void mergeSort(vector<int> &arr, int low , int high){
+//     if(low >= high) return;
+//     int mid = (low+high)/2;
+//     mergeSort(arr, low, mid);
+//     mergeSort(arr, mid+1, high);
+//     merge(arr,low , mid, high);
+// }
