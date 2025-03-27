@@ -39,6 +39,7 @@ int palindromeString(char str[], int n){
 
 int main(){
     char str[20];
+    cout << "Enter the text:" << endl;
     cin>>str;
     cout<<str<<endl;
     int len = stringLength(str);
