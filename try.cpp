@@ -1,18 +1,16 @@
 #include<bits/stdc++.h>
-#include<iterator>
 using namespace std;
 
-
 int main(){
-	int arr[] = {0};
-	int largest = INT_MIN;
-	int smallest = INT_MAX;
-	for(int val : arr){
-		if(val > largest) largest = val;
-		if(val < smallest) smallest = val;
+	int  n;
+	cout <<"Enter the number: "<< endl;
+	cin >> n;
+	int a = 0, b = 1;
+	int next;
+	for(int i = 0; i < n; i++){
+		cout << a << " " ;
+		a = b;
+		b = a+b;
 	}
-	cout <<"Largest: " << largest << endl;
-	cout <<"Smallest: " << smallest << endl;
-	cout <<"Difference: " << largest - smallest << endl;
 	return 0;
 }
