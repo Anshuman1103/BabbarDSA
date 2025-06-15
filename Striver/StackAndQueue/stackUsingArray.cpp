@@ -2,6 +2,7 @@
 using namespace std;
 
 class stackUsingArray{
+    public:
     int size;
     int top;
     int *arr;
@@ -30,5 +31,5 @@ class stackUsingArray{
 };
 
 int main(){
-
+    
 }
