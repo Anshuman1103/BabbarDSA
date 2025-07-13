@@ -1,53 +1,30 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <string>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-int partition(vector<int> &arr, int low, int high){
-    int pivot = arr[low];
-    int i = low;
-    int j = high;
-
-    while(i < j){
-        while(arr[i] <= pivot && i <= high - 1){
-            i++;
-        }
-        while(arr[j] > pivot && j >= low + 1){
-            j--;
-        }
-        if(i < j){
-            swap(arr[i], arr[j]);
-        }
+// Definition for a binary tree node.
+class Node{
+   public:
+    int data;
+    Node* left;
+    Node* right;
+    
+    Node(int d){
+        this->data = d;
+        left = NULL;
+        right = NULL;
     }
-    swap(arr[low], arr[j]);
-    return j;
-}
+};
 
-void quickSort(vector<int> &arr, int low, int high){
-    if(low > high) return;
-    int p = partition(arr, low , high);
-    quickSort(arr, low, p-1);
-    quickSort(arr, p+1, high);
+Node* buildTree(Node* root){
+    
 }
 
 int main() {
-    // Your code here
-    vector<int> arr = {1, 8, 3, 5, 2, 7};
-    int n = arr.size();
+    Node* root = NULL;
 
-    cout << "Given array: ";
-    for (int num : arr)
-        cout << num << " ";
-    cout << endl;
-
-    quickSort(arr, 0, n - 1);
-
-    cout << "Sorted array: ";
-    for (int num : arr)
-        cout << num << " ";
-    cout << endl;
+    root = buildTree(root);
+    //1 3 7 -1 —1 11 -1 -1 5 17 -1 -1 -1
+    //levelOrderTraversal(root);
 
     return 0;
 }
