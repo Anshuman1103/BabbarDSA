@@ -1,0 +1,23 @@
+Height of binary tree :
+https://leetcode.com/problems/maximum-depth-of-binary-tree/description/?envType=problem-list-v2&envId=binary-tree
+
+Diameter of Tree:
+https://leetcode.com/problems/diameter-of-binary-tree/description/?envType=problem-list-v2&envId=binary-tree
+
+Balanced Binary tree:
+https://leetcode.com/problems/balanced-binary-tree/description/?envType=problem-list-v2&envId=binary-tree
+
+Identical trees:
+https://leetcode.com/problems/same-tree/description/?envType=problem-list-v2&envId=binary-tree
+
+Sum tree:
+https://www.geeksforgeeks.org/problems/sum-tree/1
+
+Zig zag level order traversal:
+https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/?envType=problem-list-v2&envId=binary-tree
+
+Boundary of tree:
+https://www.geeksforgeeks.org/problems/boundary-traversal-of-binary-tree/1
+
+Vertical traversal:
+https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/description/?envType=problem-list-v2&envId=binary-tree

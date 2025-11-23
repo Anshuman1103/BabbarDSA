@@ -40,24 +40,47 @@ void levelOrderTraversal(Node* root){
 }
 
 vector<int> inorder(Node* root){
-    vector<int> in;
-    Node* temp = root;
-    stack<Node*> st;
+    // vector<int> in;
+    // Node* temp = root;
+    // stack<Node*> st;
 
-    while(true){
-        if(temp != NULL){
-            st.push(temp);
-            temp = temp->left;
+    // while(true){
+    //     if(temp != NULL){
+    //         st.push(temp);
+    //         temp = temp->left;
+    //     }
+    //     else{
+    //         if(st.empty()) break;
+    //         temp = st.top();
+    //         in.push_back(temp->data);
+    //         st.pop();
+    //         temp = temp->right;
+    //     }
+    // }
+    // return in;
+
+    vector<int> in;
+    if(root == NULL){
+        return in;
+    }
+
+    stack<Node*> st;
+    st.push(root);
+
+    while(!st.empty()){
+        root = st.top();
+        if(root->left){
+            st.push(root->left);
+
         }
         else{
-            if(st.empty()) break;
-            temp = st.top();
-            in.push_back(temp->data);
+            in.push_back(root->data);
             st.pop();
-            temp = temp->right;
+            root = st.top();
+            in.push_back(root->data);
+            if()
         }
     }
-    return in;
 }
 
 vector<int> preorder(Node* root){
@@ -117,9 +140,9 @@ int main() {
    // levelOrderTraversal(root);
 
     vector<int> ans;
-   //ans = preorder(root);
+   ans = preorder(root);
     //ans = inorder(root);
-    ans = postorder(root);
+    //ans = postorder(root);
     
    for(int i : ans){
     cout << i << " ";

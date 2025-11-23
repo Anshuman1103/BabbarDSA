@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/My workspace/DSA/Babbar/recursion",
-      "program": "c:/My workspace/DSA/Babbar/recursion/build/Debug/outDebug",
+      "cwd": "c:/My workspace/BabbarDSA/Striver/StackAndQueue/problems",
+      "program": "c:/My workspace/BabbarDSA/Striver/StackAndQueue/problems/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
