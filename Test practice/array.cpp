@@ -2,6 +2,7 @@
 #include<vector>
 #include<algorithm>
 #include<unordered_set>
+#include<unordered_map>
 #include<map>
 using namespace std;
 
@@ -63,6 +64,21 @@ int maxSubarraySum(vector<int> nums){
     }
 
     return maxSum;
+}
+
+int noOfSubArrayWithSum(vector<int> &nums, int target){
+    unordered_map<int,int> mpp;
+    int count = 0, sum = 0;
+    mpp[0] = 1;
+    for(int i = 0; i < nums.size(); i++){
+        sum += nums[i];
+        int diff = sum - target;
+        if(mpp.count(diff)){
+            count += mpp[diff];
+        }
+        mpp[sum]++;
+    }
+    return count;
 }
 
 void rightRotate(vector<int>& nums, int k){
@@ -248,7 +264,7 @@ int equilibriumIndex(vector<int> nums){
         totalSum += num;
     }
     int leftSum = 0;
-    for(int i = 0; i < n; i++){x
+    for(int i = 0; i < n; i++){
         int rightSum = totalSum - leftSum - nums[i];
         if(leftSum == rightSum){
             return i;
@@ -256,6 +272,44 @@ int equilibriumIndex(vector<int> nums){
         leftSum += nums[i];
     }
     return -1;
+}
+
+vector<int> productExceptSelf(vector<int>& nums) {
+    int n = nums.size();
+    vector<int> res(n, 1);
+
+    // Prefix pass
+    for (int i = 1; i < n; i++) {
+        res[i] = res[i - 1] * nums[i - 1];
+    }
+
+    // Suffix pass
+    int suffix = 1;
+    for (int i = n - 1; i >= 0; i--) {
+        res[i] *= suffix;
+        suffix *= nums[i];
+    }
+    return res;
+}
+
+int longestConsecutiveSequence(vector<int> nums){
+    unordered_set<int> st(nums.begin(), nums.end());
+    int longest = 0;
+
+    for (int num : st) {
+        // Only start counting from the beginning of a sequence.
+        if (st.find(num - 1) != st.end()) continue;
+
+        int curr = num;
+        int len = 1;
+        while (st.find(curr + 1) != st.end()) {
+            curr++;
+            len++;
+        }
+        longest = max(longest, len);
+    }
+
+    return longest;
 }
 
 int main(){
@@ -271,6 +325,8 @@ int main(){
     vector<int> nums5 = {1, 2, 3, 4, 5};
     cout << "Original: ";
     for(int i: nums5) cout << i << " "; cout << endl;
+
+    cout << "No of Subarray with Sum: " << noOfSubArrayWithSum(nums5, 5) << endl;
 
     vector<int> numsRight = nums5;
     rightRotate(numsRight, 2);
@@ -296,7 +352,10 @@ int main(){
     vector<int> nums9 = {3, 4, -1, 1};
     cout << "Smallest Missing Positive (nums9): " << smallestMissingPositive(nums9) << endl;
     cout << "1-Based indexing method: " << smallestMissingPositiveOneBased({3, 4, -1, 1}) << endl;
-    subarraySum(nums9, 5);
+    subarraySumforNegative(nums9, 5);
     vector<int> nums10 = {1, 2, 3, 0, 3};
     cout << "Equilibrium Index: " << equilibriumIndex(nums10) << endl;
+
+    vector<int> nums11 = {100, 4, 200, 1, 3, 2};
+    cout << "Longest Consecutive Sequence: " << longestConsecutiveSequence(nums11) << endl;
 }
