@@ -1,9 +1,10 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
-void sorting(vector<int> &arr){
-    int n = arr.size();
+void sorting(vector<int> &arr) {
+  int n = arr.size();
     int low = 0, mid = 0 , high = n-1;
     while(mid <= high){
         if(arr[mid] == 0){

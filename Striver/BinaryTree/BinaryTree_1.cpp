@@ -24,7 +24,7 @@ Node *buildTree(Node *root) {
   root = new Node(d);
 
   if (d == -1) {
-    return NULL;
+    return NULL;  
   }
 
   cout << "Inserting the left of " << d << endl;

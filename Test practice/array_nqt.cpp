@@ -1,7 +1,10 @@
-#include<bits/stdc++.h>
+
+#include <iostream>
+#include <vector>
+
 using namespace std;
 
-void push0toEnd(vector<int> &nums){
+void push0toEnd(vector<int> &nums) {
     int low = 0, high = 0;
     int n = nums.size();
     while(high < n){
@@ -10,7 +13,7 @@ void push0toEnd(vector<int> &nums){
             high++;
             low++;
         }
-        else high++;
+        else high++;    
     }
 
     for(auto num: nums){

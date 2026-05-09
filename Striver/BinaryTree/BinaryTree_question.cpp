@@ -142,12 +142,39 @@ Node *invertTree(Node *root) {
   return newNode;
 }
 
+// https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/?envType=problem-list-v2&envId=wfmvdse3
 Node *lowerestAncestor(Node *&root, Node *p, Node *q) {
   if (root == NULL || root == p || root == q)
     return root;
 
   Node *left = lowerestAncestor(root->left, p, q);
   Node *right = lowerestAncestor(root->right, p, q);
+}
+
+bool getPath(Node *root, vector<int> &v, int target) {
+  // 1. Base case: if root is null, target isn't here
+  if (root == NULL)
+    return false;
+  // 2. Add current node to the path
+  v.push_back(root->data);
+  // 3. Check if current node is the target
+  if (root->data == target)
+    return true;
+  // 4. Recursively check left and right subtrees
+  if (getPath(root->left, v, target) || getPath(root->right, v, target)) {
+    return true;
+  }
+  // 5. Backtrack: if target not found in subtrees, remove current node
+  v.pop_back();
+  return false;
+}
+
+void rootToNodePath(Node *&root, int target) {
+  vector<int> v;
+  getPath(root, v, target);
+  for (auto it : v) {
+    cout << it << " ";
+  }
 }
 
 int main() {
