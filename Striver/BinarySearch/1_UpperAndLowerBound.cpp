@@ -1,4 +1,7 @@
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
 using namespace std;
 
 // The learned  code is in the javaPractice folder
@@ -27,20 +30,21 @@ using namespace std;
 //     return low;
 // }
 
-
 int main() {
-    vector<int> v = {1, 2, 4, 4, 4, 5, 6, 8};
+  vector<int> v = {1, 2, 4, 4, 4, 5, 6, 8};
 
-    int target = 4;
+  int target = 4;
 
-    // lower_bound returns an iterator to the first element >= target
-    auto lb = lower_bound(v.begin(), v.end(), target);
+  // lower_bound returns an iterator to the first element >= target
+  auto lb = lower_bound(v.begin(), v.end(), target);
 
-    // upper_bound returns an iterator to the first element > target
-    auto ub = upper_bound(v.begin(), v.end(), target);
+  // upper_bound returns an iterator to the first element > target
+  auto ub = upper_bound(v.begin(), v.end(), target);
 
-    cout << "Lower bound of " << target << " is at index: " << lb - v.begin() << endl;
-    cout << "Upper bound of " << target << " is at index: " << ub - v.begin() << endl;
+  cout << "Lower bound of " << target << " is at index: " << lb - v.begin()
+       << endl;
+  cout << "Upper bound of " << target << " is at index: " << ub - v.begin()
+       << endl;
 
-    return 0;
+  return 0;
 }

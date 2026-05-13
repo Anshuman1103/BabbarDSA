@@ -1,49 +1,50 @@
-#include<iostream>
-#include<vector>
-#include<queue>
+#include <iostream>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
+
+
 using namespace std;
 
-struct Node{
-  int data;
-  Node* left;
-  Node* right;
+vector<string> findKLengthSubstrings(string s, int k) {
+  if (k > s.length() || k > 26)
+    return {}; // Optimization: k > 26 impossible for unique chars
 
-  Node(int d){
-    data = d;
-    left = right = nullptr;
+  vector<string> result;
+  unordered_map<char, int> freq;
+  unordered_set<string> seen; // To ensure unique substrings in output if needed
+
+  for (int i = 0; i < s.length(); i++) {
+    // Add current character
+    freq[s[i]]++;
+
+    // Remove leftmost character once window exceeds size k
+    if (i >= k) {
+      char leftChar = s[i - k];
+      if (--freq[leftChar] == 0) {
+        freq.erase(leftChar);
+      }
+    }
+
+    // Check if window is exactly size k and all characters are unique
+    if (i >= k - 1 && freq.size() == k) {
+      string sub = s.substr(i - k + 1, k);
+      if (seen.find(sub) == seen.end()) {
+        result.push_back(sub);
+        seen.insert(sub);
+      }
+    }
   }
-};
-
-Node* buildTree(Node* root){
-  cout << "Enter the data;" << endl;
-  int val;
-  cin >> val;
-  if(val == -1) return nullptr;
-  root = new Node(val);
-  cout << "Enter left of "<< val << endl;
-  root->left = buildTree(root->left);
-  cout << "Enter right of " << val << endl;
-  root->right = buildTree(root->right);
-  return root;
+  return result;
 }
 
-void levelOrder(Node* &root){
-  if(root == nullptr){
-    return;
-  }
-  queue<Node*> q;
-  q.push(root);
-  q.push(nullptr);
-  while(!q.empty()){
-    Node* temp = q.front();
-    q.pop();
-    if(temp->left) q.push(temp->left);
-    if(temp->right) q.push(temp->right);
-    
-  }
-}
+int main() {
+  string s = "awaglknagawunagwkwagl";
+  int k = 4;
+  vector<string> res = findKLengthSubstrings(s, k);
 
-int main(){
-    Node* root = nullptr;
-    buildTree(root);
+  for (const string &str : res)
+    cout << str << " ";
+  return 0;
 }

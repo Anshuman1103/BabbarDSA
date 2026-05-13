@@ -1,20 +1,24 @@
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
 using namespace std;
 
-int main(){
-    vector<int> v = {1, 2, 3 ,5, 5 ,5 ,5 ,5 , 8};
-    int target = 5;
-    auto first = lower_bound(v.begin(), v.end(), target);
-    auto last = upper_bound(v.begin(), v.end(), target);
-    int low = first - v.begin();
-    int high = last - v.begin() - 1;
+int main() {
+  vector<int> v = {1, 2, 3, 5, 5, 5, 5, 5, 8};
+  int target = 5;
+  auto first = lower_bound(v.begin(), v.end(), target);
+  auto last = upper_bound(v.begin(), v.end(), target);
+  int low = first - v.begin();
+  int high = last - v.begin() - 1;
 
-    if((v[low] == v.size()) || v[low] != target){
-        cout << "Element is not present " << endl;
-        return;
-    } 
+  if ((v[low] == v.size()) || v[low] != target) {
+    cout << "Element is not present " << endl;
+    return 1;
+  }
 
-    cout << "First : " << low << endl;
-    cout <<"Last : " << high << endl;
-    cout <<"Number of occurance :" << high - low + 1 << endl ;
+  cout << "First : " << low << endl;
+  cout << "Last : " << high << endl;
+  cout << "Number of occurance :" << high - low + 1 << endl;
+  return 0;
 }
